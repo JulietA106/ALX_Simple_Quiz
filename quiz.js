@@ -1,22 +1,30 @@
+// Define the function
 function checkAnswer() {
+    // Correct answer
     const correctAnswer = "4";
 
-    // get the selected radio button
+    // Get the user's selected answer
     const selectedOption = document.querySelector('input[name="quiz"]:checked');
-    
-    if (!selectedOption) {
-        document.getElementById("feedback").textContent = "Please select an answer before submitting.";
-        return;
+
+    let userAnswer = "";
+    if (selectedOption) {
+        userAnswer = selectedOption.value;
     }
 
-    const userAnswer = selectedOption.value;
+    // Get the feedback element
+    const feedback = document.getElementById("feedback");
 
+    // Compare userAnswer with correctAnswer
     if (userAnswer === correctAnswer) {
-        document.getElementById("feedback").textContent = "Correct! Well done.";
+        feedback.textContent = "Correct! Well done.";
     } else {
-        document.getElementById("feedback").textContent = "That's incorrect. Try again!";
+        feedback.textContent = "That's incorrect. Try again!";
     }
 }
 
-// add event listener to the button
-document.getElementById("submit-answer").addEventListener("click", checkAnswer);
+// Retrieve the submit button
+const submitButton = document.getElementById("submit-answer");
+
+// Add event listener to the button
+submitButton.addEventListener("click", checkAnswer);
+
